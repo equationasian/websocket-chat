@@ -1,0 +1,78 @@
+html {
+    min-height: 100%;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background: linear-gradient(#B2A4FF, #FDF7C3);
+    font-family: 'Nunito', sans-serif;
+}
+
+.chat-grid {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    min-height: 100vh;
+    min-width: 100vw;
+    grid-template-rows: minmax(500px, auto) auto;
+    grid-template-columns: 75%;
+}
+
+.chat-history {
+    background-color: #f9c5c5;
+    color: #451952;
+    padding: 20px 25px;
+    border-style: solid solid none solid;
+    border-color: white;
+    border-width: thin;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.chat-input {
+    background-color: #FFDEB4;
+    padding: 15px 25px;
+    border-style: none solid solid solid;
+    border-color: white;
+    border-width: thin;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+#input-form {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+#input-message {
+    flex: auto;
+    padding: 10px;
+    border-style: none;
+    border-radius: 5px;
+    background-color: #f8f5e0;
+    color: #451952;
+}
+
+#input-message::placeholder {
+    font-family: 'Nunito', sans-serif;
+    color: #451952;
+}
+
+#input-message:focus {
+    outline: none;
+}
+
+#send-message {
+    padding: 10px 15px;
+    border-style: none;
+    border-radius: 5px;
+    background-color: #d6d0fb;
+    color: #451952;
+}
+
+#send-message:hover {
+    background-color: #c0bdd9;
+    cursor: pointer;
+}
