@@ -22,13 +22,18 @@ function appendMessage(message) {
 
 client.activate();
 
-const textBox = document.getElementById("input-message");
-const sendButton = document.getElementById("send-message");
+const form = document.getElementById("input-form");
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    sendButton.click();
+});
 
+const sendButton = document.getElementById("send-message");
 sendButton.addEventListener("click", () => {
-    const message = JSON.stringify(textBox.innerHTML);
+    let textBox = document.getElementById("input-message");
     client.publish({
-        destination: "/topic/channel",
-        body: message
+            destination: "/topic/channel",
+            body: JSON.stringify({content: textBox.value})
     });
+    textBox.value = "";
 });
