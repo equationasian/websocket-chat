@@ -18,6 +18,7 @@ client.onStompError = (frame) => {
 const chatHistory = document.querySelector(".chat-history");
 function appendMessage(message) {
     chatHistory.insertAdjacentHTML("beforeend", "<p>" + message + "</p>");
+    chatHistory.scrollTop = chatHistory.scrollHeight;
 }
 
 client.activate();
