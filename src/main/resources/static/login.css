@@ -49,3 +49,9 @@ body {
     background-color: #c0bdd9;
     cursor: pointer;
 }
+
+#signup-link {
+    text-decoration: none;
+    margin-top: 15px;
+    font-size: small;
+}
