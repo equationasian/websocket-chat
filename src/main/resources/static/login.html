@@ -11,10 +11,10 @@
 </head>
 <body>
 <div class="login-box">
-    <form id="login-form" action="#" autocomplete="off">
+    <form id="login-form" action="login.html" method="post" autocomplete="off">
         <h1 id="login-header">Login</h1>
-        <input type="text" id="username" placeholder="Username">
-        <input type="password" id="password" placeholder="Password">
+        <input type="text" name="username" id="username" placeholder="Username" required>
+        <input type="password" name="password" id="password" placeholder="Password" required>
         <button type="submit" id="login-button">LOGIN</button>
         <a id="signup-link" href="signup.html">Create an account</a>
     </form>
