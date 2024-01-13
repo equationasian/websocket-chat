@@ -55,3 +55,15 @@ body {
     margin-top: 15px;
     font-size: small;
 }
+
+#error-message {
+    background-color: #fa2424;
+    color: white;
+    padding: 15px;
+}
+
+#success-message {
+    background-color: #42c155;
+    color: white;
+    padding: 15px;
+}

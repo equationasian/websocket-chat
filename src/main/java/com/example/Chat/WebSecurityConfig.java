@@ -2,6 +2,7 @@ package com.example.Chat;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -20,18 +21,21 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(requests ->
-                requests.requestMatchers("/css/**", "/js/**", "/signup.html")
+                requests.requestMatchers("/css/**", "/js/**", "/signup.html", "static/signup.html", "/login.html")
                         .permitAll()
                         .anyRequest()
                         .authenticated())
-            .formLogin(form -> form.loginPage("/login.html").permitAll().defaultSuccessUrl("/index.html", true))
+            .formLogin(form ->
+                form.loginPage("/login.html").
+                        permitAll().
+                        defaultSuccessUrl("/index.html", true))
             .logout(LogoutConfigurer::permitAll)
             .csrf(AbstractHttpConfigurer::disable);
         return http.build();
     }
 
     @Bean
-    public UserDetailsService userDetailsService() {
+    public InMemoryUserDetailsManager userDetailsService() {
         UserDetails user = User.builder()
                 .username("user")
                 .password(bCryptPasswordEncoder().encode("password"))
