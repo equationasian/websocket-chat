@@ -1,4 +1,9 @@
 const signupForm = document.getElementById("login-form");
+const errorParam = new URLSearchParams(window.location.search);
+if (errorParam.has("error")) {
+    const errorMessage = signupForm.insertAdjacentHTML("beforebegin", "<div id='error-message'>Username already exists</div>")
+}
+
 signupForm.onsubmit = async (e) => {
     e.preventDefault();
 
@@ -15,13 +20,6 @@ signupForm.onsubmit = async (e) => {
         body: JSON.stringify(formObject)
     });
 
-    if (sendForm.ok) {
-        //let json = await sendForm.text();
-        console.log(formObject);
-    }
-    else {
-        console.log("http error");
-    }
-
-    window.location.assign("login.html");
+    let result = await sendForm;
+    window.location.href = result.url;
 };

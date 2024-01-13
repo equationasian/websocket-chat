@@ -15,12 +15,22 @@ public class ChatUserDAO {
     @Autowired
     private PasswordEncoder encoder;
 
-    public void createUser(ChatUser user) {
+    public boolean createUser(ChatUser user) {
+        boolean userExists = checkExistingUser(user.getUsername());
+        if (userExists) {
+            return false;
+        }
+
         UserDetails newUser = User.builder()
                 .username(user.getUsername())
                 .password(encoder.encode(user.getPassword()))
                 .roles("USER")
                 .build();
         detailsManager.createUser(newUser);
+        return true;
+    }
+
+    public boolean checkExistingUser(String username) {
+        return detailsManager.userExists(username);
     }
 }

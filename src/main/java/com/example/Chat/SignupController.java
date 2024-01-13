@@ -15,7 +15,12 @@ public class SignupController {
     }
 
     @PostMapping("/signup.html")
-    public void signupForm(@RequestBody ChatUser user) {
-        chatUserDAO.createUser(user);
+    public String signupForm(@RequestBody ChatUser user) {
+        boolean isCreated = chatUserDAO.createUser(user);
+        if (!isCreated) {
+            return "redirect:/signup.html?error";
+        }
+
+        return "redirect:/login.html?registered";
     }
 }
