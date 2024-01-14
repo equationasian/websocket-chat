@@ -18,7 +18,14 @@ client.onStompError = (frame) => {
 
 const chatHistory = document.querySelector(".chat-history");
 function appendMessage(message) {
-    chatHistory.insertAdjacentHTML("beforeend", "<p><b>" + message.username + ": </b>" + message.content + "</p>");
+    const chatMessage = `<div class='chat-message-grid'>
+                                         <img src='img/user-solid.svg' class='avatar'>
+                                         <div class='chat-and-username'>
+                                             <b class='username'>${message.username}</b>
+                                             <span class='chat-message chat-bubble'>${message.content}</span>
+                                         </div>
+                                     </div>`;
+    chatHistory.insertAdjacentHTML("beforeend", chatMessage);
     chatHistory.scrollTop = chatHistory.scrollHeight;
 }
 

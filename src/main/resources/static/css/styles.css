@@ -1,8 +1,9 @@
 html {
-    min-height: 100%;
+    height: 100%;
 }
 
 body {
+    height: 100%;
     padding: 0;
     margin: 0;
     background: linear-gradient(#B2A4FF, #FDF7C3);
@@ -84,4 +85,35 @@ body {
 .connect-message {
     color: grey;
     text-align: center;
+}
+
+.chat-message-grid {
+    display: grid;
+    grid-template-columns: 40px auto;
+    grid-template-rows: auto;
+    margin: 20px 0;
+}
+
+.avatar {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: #f8f5e0;
+}
+
+.chat-and-username {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+
+.chat-bubble {
+    padding: 10px;
+    background-color: #f8f5e0;
+    height: auto;
+    width: fit-content;
+    max-width: 80%;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    border-radius: 20px;
 }
