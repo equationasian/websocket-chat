@@ -10,15 +10,20 @@ body {
 }
 
 .login-box {
-    display: flex;
+    display: grid;
+    grid-template-rows: 25vh 75vh;
+    grid-template-columns: auto;
+    justify-content: center;
+    /*display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    width: 100vw;
+    width: 100vw;*/
 }
 
 #login-form {
+    grid-row: 2;
     height: 400px;
     width: 400px;
     display: flex;
@@ -60,10 +65,23 @@ body {
     background-color: #fa2424;
     color: white;
     padding: 15px;
+    border-radius: 5px;
+}
+
+#success-container {
+    grid-row: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #success-message {
     background-color: #42c155;
     color: white;
     padding: 15px;
+    border-radius: 5px;
+}
+
+#success-container > span > i {
+    margin: 0 10px;
 }
