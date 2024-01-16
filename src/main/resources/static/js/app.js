@@ -1,14 +1,29 @@
 const client = new StompJs.Client();
 client.brokerURL = "ws://localhost:8080/websockets";
 
+function connectMessage(message) {
+    const connect = `<p class='connect-message'>${message.username}${message.content}</p>`;
+    chatHistory.insertAdjacentHTML("beforeend", connect);
+    chatHistory.scrollTop = chatHistory.scrollHeight;
+}
+
 const connectCallback = (message) => {
-    appendMessage(JSON.parse(message.body));
+    const parsedMessage = JSON.parse(message.body);
+    if (parsedMessage.content === ' has joined the chat') {
+        connectMessage(parsedMessage);
+    }
+    else {
+        appendMessage(parsedMessage);
+    }
 };
 
 client.onConnect = (frame) => {
     console.log("Connected: " + frame);
-    client.subscribe("/topic/channel", connectCallback);
-    chatHistory.insertAdjacentHTML("beforeend", "<p class='connect-message'>" + frame.headers["user-name"] + " has joined the chat.</p>");
+    const subscription = client.subscribe("/topic/channel", connectCallback);
+    client.publish({
+        destination: "/app/channel",
+        body: JSON.stringify({username: 'currentUser', content: ' has joined the chat'})
+    });
 };
 
 client.onStompError = (frame) => {

@@ -1,7 +1,7 @@
 const signupForm = document.getElementById("login-form");
 const errorParam = new URLSearchParams(window.location.search);
 if (errorParam.has("error")) {
-    const errorMessage = signupForm.insertAdjacentHTML("beforebegin", "<div id='error-message'>Username already exists</div>")
+    const errorMessage = signupForm.insertAdjacentHTML("beforebegin", "<div id='success-container'><span id='error-message'><i class='fa-solid fa-xmark'></i>Username already exists</span></div>")
 }
 
 signupForm.onsubmit = async (e) => {
