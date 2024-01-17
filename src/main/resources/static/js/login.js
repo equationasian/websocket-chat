@@ -6,3 +6,6 @@ if (successParam.has("registered")) {
 else if (successParam.has("error")) {
     const errorMessage = signupForm.insertAdjacentHTML("beforebegin", "<div id='success-container'><span id='error-message'><i class='fa-solid fa-xmark'></i>Invalid username or password</span></div>");
 }
+else if (successParam.has("signout")) {
+    const errorMessage = signupForm.insertAdjacentHTML("beforebegin", "<div id='success-container'><span id='success-message'><i class='fa-solid fa-check'></i>Successfully logged out</span></div>");
+}

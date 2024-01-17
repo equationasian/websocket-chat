@@ -1,7 +1,5 @@
 package com.example.Chat;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class ChatUser {
     private String username;
     private String password;
