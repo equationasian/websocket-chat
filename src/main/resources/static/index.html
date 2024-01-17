@@ -17,13 +17,20 @@
         <div id="nav-container">
             <img src="img/logo.png" id="logo">
             <ul id="nav-links-container">
-                <li class="nav-item"><a href="#" class="nav-links">DM</a></li>
-                <li class="nav-item"><a href="#" class="nav-links">Servers</a></li>
+                <li class="nav-item"><a href="#dm" class="nav-links">DM</a></li>
+                <li class="nav-item"><a href="#servers" class="nav-links">Servers</a></li>
             </ul>
             <a href="/logout" id="signout">Sign Out</a>
         </div>
     </nav>
     <div class="chat-grid">
+        <div class="chat-header">
+            <h3 id="server-header">Server: General</h3>
+            <div id="connect-layout">
+                <div id="loader"></div>
+                <span id="connect-status">Connecting to chat room...</span>
+            </div>
+        </div>
         <div class="chat-history"></div>
         <div class="chat-input">
             <form id="input-form" autocomplete="off">

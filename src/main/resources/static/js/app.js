@@ -26,6 +26,8 @@ client.onConnect = (frame) => {
         destination: "/app/channel",
         body: JSON.stringify({username: 'currentUser', content: ' has joined the chat'})
     });
+    const connectedHTML = "<span id='connect-status'><i class='fa-solid fa-check'></i>Connected to chat room</span>";
+    document.getElementById("connect-layout").innerHTML = connectedHTML;
 };
 
 client.onStompError = (frame) => {
@@ -62,7 +64,6 @@ sendButton.addEventListener("click", () => {
     textBox.value = "";
 });
 
-chatHistory.insertAdjacentHTML("beforeend", "<p class='connect-message'>Connecting to chat rooms...</p>");
 client.activate();
 
 const signoutButton = document.getElementById("signout");
