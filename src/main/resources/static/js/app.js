@@ -1,6 +1,8 @@
 const client = new StompJs.Client();
 client.brokerURL = "ws://localhost:8080/websockets";
 
+let subscription;
+
 function connectMessage(message) {
     const connect = `<p class='connect-message'>${message.username}${message.content}</p>`;
     chatHistory.insertAdjacentHTML("beforeend", connect);
@@ -9,7 +11,7 @@ function connectMessage(message) {
 
 const connectCallback = (message) => {
     const parsedMessage = JSON.parse(message.body);
-    if (parsedMessage.content === ' has joined the chat') {
+    if (parsedMessage.content === ' has joined the chat' || parsedMessage.content === ' has left the chat') {
         connectMessage(parsedMessage);
     }
     else {
@@ -19,7 +21,7 @@ const connectCallback = (message) => {
 
 client.onConnect = (frame) => {
     console.log("Connected: " + frame);
-    const subscription = client.subscribe("/topic/channel", connectCallback);
+    subscription = client.subscribe("/topic/channel", connectCallback);
     client.publish({
         destination: "/app/channel",
         body: JSON.stringify({username: 'currentUser', content: ' has joined the chat'})
@@ -44,9 +46,6 @@ function appendMessage(message) {
     chatHistory.scrollTop = chatHistory.scrollHeight;
 }
 
-chatHistory.insertAdjacentHTML("beforeend", "<p class='connect-message'>Connecting...</p>");
-client.activate();
-
 const form = document.getElementById("input-form");
 form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -61,6 +60,19 @@ sendButton.addEventListener("click", () => {
             body: JSON.stringify({username: 'currentUser', content: textBox.value})
     });
     textBox.value = "";
+});
+
+chatHistory.insertAdjacentHTML("beforeend", "<p class='connect-message'>Connecting to chat rooms...</p>");
+client.activate();
+
+const signoutButton = document.getElementById("signout");
+signoutButton.addEventListener("click", () => {
+    client.publish({
+        destination: "/app/channel",
+        body: JSON.stringify({username: 'currentUser', content: ' has left the chat'})
+    });
+    subscription.unsubscribe();
+    client.deactivate();
 });
 
 client.debug = str => console.log(str);
