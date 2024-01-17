@@ -25,7 +25,7 @@ public class WebSecurityConfig {
             .formLogin(form ->
                 form.loginPage("/login.html").
                         permitAll().
-                        defaultSuccessUrl("/index.html", true))
+                        defaultSuccessUrl("/index.html#servers", true))
             .logout(logout ->
                 logout.logoutSuccessUrl("/login.html?signout"))
             .csrf(AbstractHttpConfigurer::disable);
