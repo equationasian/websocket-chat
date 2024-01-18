@@ -1,5 +1,5 @@
 # Chat App - babble
-I initially created this project as a fun introduction to the Spring framework, basic JavaScript, and the DOM for myself. It's an ongoing project I plan to further develop as I learn new technologies and dive deeper into full stack development.
+I initially created this project as a fun introduction to the Spring framework, basic JavaScript, and the DOM for myself. It's an ongoing project I plan to further develop as I dive deeper into full stack development.
 
 ## Description
 [Edit]
