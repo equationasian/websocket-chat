@@ -7,7 +7,16 @@ Until the user is authenticated, the only available pages are the login and regi
 username: user
 password: password
 ```
-On a successful login, the user will be redirected to the chat room.
+On a successful login, the user will be redirected to the chat room. Users can send messages after the server connection has been established.
+
+![Imgur Image](https://imgur.com/jAQKcdv.png)
+
+Currently, only one chatroom has been implemented, so all users will see the same chatroom upon login and the DM tab will not change anything.
+
+For each new user that connects to the chatroom, a message will be broadcasted to the other members in the chatroom, notifying everyone exactly who has joined or left.
+
+![Imgur Image](https://imgur.com/gRLh3jn.png)
+![Imgur Image](https://imgur.com/tauXu9r.png)
 
 ## Resources
 - [Spring WebSocket documentation](https://docs.spring.io/spring-framework/docs/4.3.x/spring-framework-reference/html/websocket.html#websocket-stomp-enable)
