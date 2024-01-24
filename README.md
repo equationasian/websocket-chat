@@ -2,11 +2,18 @@
 I initially created this project as a fun introduction to the Spring framework and basic JavaScript for myself. It's an ongoing project I plan to further develop as I dive deeper into full stack development.
 
 ## Description
+To run the application, type into the terminal:
+```
+./mvnw spring-boot:run
+```
+The server will be started on port 8080. Enter ``localhost:8080`` on a browser and you will see the login page.
+
 Until the user is authenticated, the only available pages are the login and registration pages. At the moment, there is no database in this application. Instead, all user information is encoded and stored in memory using Spring Security's [InMemoryUserDetailsManager](https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/in-memory.html), therefore information for any newly registered users will be wiped each time the application is started. For quick testing, there is a pre-created account:
 ```
 username: user
 password: password
 ```
+
 On a successful login, the user will be redirected to the chat room. Users can send messages after the server connection has been established.
 
 ![Imgur Image](https://imgur.com/jAQKcdv.png)
