@@ -1,6 +1,7 @@
 const client = new StompJs.Client();
 client.brokerURL = "ws://localhost:8080/websockets";
 
+let myUsername;
 let subscription;
 
 function connectMessage(message) {
@@ -21,6 +22,7 @@ const connectCallback = (message) => {
 
 client.onConnect = (frame) => {
     console.log("Connected: " + frame);
+    myUsername = frame.headers['user-name'];
     subscription = client.subscribe("/topic/channel", connectCallback);
     client.publish({
         destination: "/app/channel",
@@ -37,13 +39,25 @@ client.onStompError = (frame) => {
 
 const chatHistory = document.querySelector(".chat-history");
 function appendMessage(message) {
-    const chatMessage = `<div class='chat-message-grid'>
-                                         <img src='img/user-solid.svg' class='avatar'>
-                                         <div class='chat-and-username'>
-                                             <b class='username'>${message.username}</b>
-                                             <span class='chat-message chat-bubble'>${message.content}</span>
-                                         </div>
-                                     </div>`;
+    let chatMessage;
+    if (message.username === myUsername) {
+        chatMessage = `<div class='my-chat-message-grid'>
+                                                 <div class='my-chat-and-username'>
+                                                     <b class='my-username'>${message.username}</b>
+                                                     <span class='my-chat-bubble'>${message.content}</span>
+                                                 </div>
+                                                 <img src='img/user-solid.svg' class='my-avatar'>
+                                             </div>`;
+    }
+    else {
+        chatMessage = `<div class='chat-message-grid'>
+                                                 <img src='img/user-solid.svg' class='avatar'>
+                                                 <div class='chat-and-username'>
+                                                     <b class='username'>${message.username}</b>
+                                                     <span class='chat-bubble'>${message.content}</span>
+                                                 </div>
+                                             </div>`;
+    }
     chatHistory.insertAdjacentHTML("beforeend", chatMessage);
     chatHistory.scrollTop = chatHistory.scrollHeight;
 }
