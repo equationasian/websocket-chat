@@ -205,7 +205,24 @@ body {
     margin: 20px 0;
 }
 
+.my-chat-message-grid {
+    display: grid;
+    grid-template-columns: 80% 40px;
+    grid-template-rows: auto;
+    margin: 20px 0;
+    justify-content: end;
+}
+
 .avatar {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.my-avatar {
+    justify-self: end;
+    grid-column: 2;
     height: 30px;
     width: 30px;
     border-radius: 50%;
@@ -218,13 +235,39 @@ body {
     row-gap: 5px;
 }
 
+.my-chat-and-username {
+    grid-column: 1;
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+
 .username {
     color: #81606a;
+}
+
+.my-username {
+    color: #81606a;
+    align-self: flex-end;
 }
 
 .chat-bubble {
     padding: 10px;
     background-color: #E27D60;
+    color: white;
+    height: auto;
+    width: fit-content;
+    max-width: 80%;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    border-radius: 20px;
+}
+
+.my-chat-bubble {
+    align-self: flex-end;
+    grid-column: 1;
+    padding: 10px;
+    background-color: #5ab3a7;
     color: white;
     height: auto;
     width: fit-content;
