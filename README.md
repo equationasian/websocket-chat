@@ -1,14 +1,14 @@
 # Chat App - babble
-I initially created this project as a fun introduction to the Spring framework and basic JavaScript for myself. It's an ongoing project I plan to further develop as I dive deeper into full stack development.
+I initially created this project as a fun introduction to the Spring framework and basic JavaScript for myself. It is still a work in progress. Currently, only user authentication and a single chatroom has been implemented.
 
 ## Description
 To run the application, type into the terminal:
 ```
 ./mvnw spring-boot:run
 ```
-The server will be started on port 8080. Enter ``localhost:8080`` on a browser and you will see the login page.
+The server will start on port 8080. Enter ``localhost:8080`` into a browser and you will see the login page.
 
-Until the user is authenticated, the only available pages are the login and registration pages. At the moment, there is no database in this application. Instead, all user information is encoded and stored in memory using Spring Security's [InMemoryUserDetailsManager](https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/in-memory.html), therefore information for any newly registered users will be wiped each time the application is started. For quick testing, there is a pre-created account:
+Until the user is authenticated, the only available pages are the login and registration pages. At the moment, there is no database in this application. Instead, all user information is encoded and stored in memory using Spring Security's [InMemoryUserDetailsManager](https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/in-memory.html), therefore information for any newly registered users will be wiped each time the application is restarted. For quick testing, there is a pre-created account:
 ```
 username: user
 password: password
@@ -18,7 +18,7 @@ On a successful login, the user will be redirected to the chat room. Users can s
 
 ![Imgur Image](https://imgur.com/jAQKcdv.png)
 
-Currently, only one chatroom has been implemented, so all users will see the same chatroom upon login and the DM tab will not change anything.
+Only one chatroom has been implemented, so all users will see the same chatroom upon login. The DM tab and the Servers tab in the navigation bar have no functionality.
 
 For each new user that connects to the chatroom, a message will be broadcasted to the other members in the chatroom, notifying everyone exactly who has joined or left.
 
