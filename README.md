@@ -8,7 +8,7 @@ To run the application, type into the terminal:
 ```
 The server will start on port 8080. Enter ``localhost:8080`` into a browser and you will see the login page.
 
-Until the user is authenticated, the only available pages are the login and registration pages. At the moment, there is no database in this application. Instead, all user information is encoded and stored in memory using Spring Security's [InMemoryUserDetailsManager](https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/in-memory.html), therefore information for any newly registered users will be wiped each time the application is restarted. For quick testing, there is a pre-created account:
+Until the user is authenticated, the only available pages are the login and registration pages. At the moment, there is no database in this application. Instead, all user information is encoded and stored in memory using Spring Security's InMemoryUserDetailsManager, therefore information for any newly registered users will be wiped each time the application is restarted. For quick testing, there is a pre-created account:
 ```
 username: user
 password: password
